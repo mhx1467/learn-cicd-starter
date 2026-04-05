@@ -38,7 +38,7 @@ jobs:
         run: go install honnef.co/go/tools/cmd/staticcheck@latest          
       
       - name: Run backend formatter
-        run: test -z $(go fmt ./...)
+        run: test -z "$(go fmt ./...)"
 
-      - name: Run backend
-        run: test -z $(staticcheck ./...) 
+      - name: Run backend linter
+        run: test -z "$(staticcheck ./...)" # could be done as staticcheck ./... >/dev/null || exit 1
